@@ -1,1 +1,1 @@
-# struts
+# Seed Struts + Hibernate

@@ -33,7 +33,7 @@
 	</servlet-mapping>
 	
 	<listener>
-		<listener-class>com.keylesson.hibernate.HibernateServlet</listener-class>
+		<listener-class>com.indra.hibernate.HibernateServlet</listener-class>
 	</listener>
 	
 	<welcome-file-list>

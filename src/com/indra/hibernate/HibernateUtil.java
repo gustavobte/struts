@@ -1,4 +1,4 @@
-package com.keylesson.hibernate;
+package com.indra.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
