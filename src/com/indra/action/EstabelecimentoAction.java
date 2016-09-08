@@ -1,4 +1,4 @@
-package com.keylesson.action;
+package com.indra.action;
 
 import java.util.List;
 
@@ -10,41 +10,38 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
-import com.keylesson.dao.EstabelecimentoDAO;
-import com.keylesson.form.EstabelecimentoForm;
+import com.indra.dao.EstabelecimentoDAO;
+import com.indra.form.EstabelecimentoForm;
+import com.indra.persistence.Estabelecimento;
 
 public class EstabelecimentoAction extends DispatchAction {
 
-	public ActionForward goToSearchPage(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	public ActionForward goToSearchPage(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		return mapping.findForward("search");
 	}
-	
-	public ActionForward goToAddPage(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+
+	public ActionForward goToAddPage(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		return mapping.findForward("add");
 	}
-	
-	public ActionForward searchUsers(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+
+	public ActionForward searchUsers(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		EstabelecimentoForm userForm = (EstabelecimentoForm) form;
-		List users = new EstabelecimentoDAO().getUsers(userForm.getEstabelecimento());
+		List<Estabelecimento> users = new EstabelecimentoDAO().getUsers(userForm.getEstabelecimento());
 		request.setAttribute("users", users);
 		return mapping.findForward("search");
 	}
-	
-	public ActionForward addUser(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+
+	public ActionForward addUser(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		EstabelecimentoForm userForm = (EstabelecimentoForm) form;
 		String result = new EstabelecimentoDAO().createUser(userForm.getEstabelecimento(), userForm.getSituacao());
-		if(result.equals("success")){
+		if (result.equals("success")) {
 			request.setAttribute("success", true);
 			userForm.reset();
-		}else{
+		} else {
 			request.setAttribute("failure", true);
 		}
 		return mapping.findForward("add");

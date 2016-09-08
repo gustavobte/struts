@@ -4,11 +4,11 @@
 <struts-config>
 
 	<form-beans>
-		<form-bean name="userForm" type="com.keylesson.form.EstabelecimentoForm" />
+		<form-bean name="userForm" type="com.indra.form.EstabelecimentoForm" />
 	</form-beans>
 
 	<action-mappings>
-		<action path="/user" type="com.keylesson.action.EstabelecimentoAction" parameter="dispatch" name="userForm">
+		<action path="/user" type="com.indra.action.EstabelecimentoAction" parameter="dispatch" name="userForm">
 			<forward name="search" path="/user/search.jsp" />
 			<forward name="add" path="/user/add.jsp" />
 		</action>

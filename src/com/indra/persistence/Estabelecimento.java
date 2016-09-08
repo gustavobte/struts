@@ -1,4 +1,4 @@
-package com.keylesson.persistence;
+package com.indra.persistence;
 
 public class Estabelecimento {
 

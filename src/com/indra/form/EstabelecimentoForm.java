@@ -1,4 +1,4 @@
-package com.keylesson.form;
+package com.indra.form;
 
 import org.apache.struts.action.ActionForm;
 
