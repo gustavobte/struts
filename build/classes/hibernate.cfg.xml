@@ -12,9 +12,7 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="show_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>
-
-
-
-		<mapping resource="com/indra/persistence/Estabelecimento.hbm.xml"></mapping>
+		
+		<mapping class="com.indra.model.Estabelecimento"/>
 	</session-factory>
 </hibernate-configuration>
