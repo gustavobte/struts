@@ -6,11 +6,11 @@ public class EstabelecimentoForm extends ActionForm {
 	private static final long serialVersionUID = 1L;
 
 	private String dispatch;
-	private String estabelecimento;
+	private String descricao;
 	private String situacao;
 
 	public void reset() {
-		this.estabelecimento = null;
+		this.descricao = null;
 		this.situacao = null;
 	}
 
@@ -22,12 +22,12 @@ public class EstabelecimentoForm extends ActionForm {
 		this.dispatch = dispatch;
 	}
 
-	public String getEstabelecimento() {
-		return estabelecimento;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setEstabelecimento(String estabelecimento) {
-		this.estabelecimento = estabelecimento;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getSituacao() {
