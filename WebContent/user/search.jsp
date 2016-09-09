@@ -16,7 +16,18 @@
 		}
 	</script>
 </head>
-<body>
+<body style="padding-top: 0px; padding: 0px; padding-bottom: 0px; padding-left: 0px; 
+padding-right: 0px; background-image:url('img/topo.png'); background-repeat: no-repeat;">
+<br><br><br><br><br><br><br><br>
+	<div style="height: 25px;" >
+	<small>Voce esta aqui: > Tabelas de Apoio > <b>Consultar Estabelecimento</b></small>
+	</div>
+<h2><b>Estabelecimento</b></h2>
+<hr color="#3866B5">
+<div>
+	<h4><p>Consultar</p></h4>
+</div>
+	<hr width="1300px" >
 	<html:form action="/user" styleId="formSearch">
 		<html:hidden property="dispatch" />
 		<table>
@@ -32,8 +43,8 @@
 	<logic:notEmpty name="users" >
 	<table width="100%">
 		<tr>
-			<td bgcolor="#FF9900">Estabelecimento</td>
-			<td bgcolor="#FF9900">Situação</td>
+			<td bgcolor="#3866B5">Estabelecimento</td>
+			<td bgcolor="#3866B5">Situação</td>
 		</tr>
 		<logic:iterate name="users" id="user">
 			<tr>
@@ -45,6 +56,6 @@
 	</logic:notEmpty>
 		
 	<br><br>
-	<html:link href="${pageContext.request.contextPath}/"> Home </html:link>
+	<html:link href="${pageContext.request.contextPath}/"> Voltar </html:link>
 </body>
 </html>

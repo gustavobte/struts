@@ -16,7 +16,18 @@
 		}
 	</script>
 </head>
-<body>
+<body style="padding-top: 0px; padding: 0px; padding-bottom: 0px; padding-left: 0px; 
+padding-right: 0px; background-image:url('img/topo.png'); background-repeat: no-repeat;">
+<br><br><br><br><br><br><br><br>
+	<div style="height: 25px;" >
+	<small>Voce esta aqui: > Tabelas de Apoio > <b>Cadastrar Estabelecimento</b></small>
+	</div>
+<h2><b>Estabelecimento</b></h2>
+<hr color="#3866B5">
+<div>
+	<h4><p>Inserir</p></h4>
+</div>
+	<hr width="1300px" >
 	<html:form action="/user" styleId="formAdd">
 		<html:hidden property="dispatch" />
 		<table>
@@ -43,7 +54,7 @@
 	
 	<font color="green" size=2> 
 		<logic:present name="success">
-			Sucesso@!! 
+			Sucessosss!! 
 		</logic:present>
 	</font>
 	
@@ -56,6 +67,6 @@
 	</font>	
 	<br><br>
 	
-	<html:link href="${pageContext.request.contextPath}/"> Home </html:link>
+	<html:link href="${pageContext.request.contextPath}/"> Voltar </html:link>
 </body>
 </html>
