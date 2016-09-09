@@ -1,45 +1,56 @@
 package com.indra.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Restrictions;
 
 import com.indra.hibernate.HibernateUtil;
-import com.indra.persistence.Estabelecimento;
+import com.indra.model.Estabelecimento;
+import com.indra.util.Messages;
 
 public class EstabelecimentoDAO {
 
-	public String createUser(String estabelecimento, String situacao) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		try {
-			session.beginTransaction();
-			Estabelecimento user = new Estabelecimento();
-			user.setEstabelecimento(estabelecimento);
-			user.setSituacao(situacao);
-			session.save(user);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			System.err.println("Error ao criar estabelecimento:" + e.getMessage());
-			session.getTransaction().rollback();
-			return "failure";
-		}
-		return "success";
+	List<Estabelecimento> estabelecimentos;
+	private Criteria criteria;
+
+	public EstabelecimentoDAO() {
+		this.estabelecimentos = new ArrayList<Estabelecimento>();
 	}
 
-	public List<Estabelecimento> getUsers(String estabelecimento) {
+	public String createUser(String descricao, String situacao) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		List<Estabelecimento> users = null;
 		try {
 			session.beginTransaction();
-			users = session.createCriteria(Estabelecimento.class)
-					.add(Restrictions.ilike("estabelecimento", "%" + estabelecimento + "%")).list();
+			Estabelecimento estabelecimento = new Estabelecimento();
+			estabelecimento.setDescricao(descricao);
+			estabelecimento.setSituacao(situacao);
+			session.save(estabelecimento);
 			session.getTransaction().commit();
 		} catch (Exception e) {
-			System.err.println("Error getting Users :" + e);
+			System.err.println(Messages.get("estabelecimento.erro.cadastrar") + e.getMessage());
+			session.getTransaction().rollback();
+			return Messages.get("erro");
+		}
+		return Messages.get("sucesso");
+	}
+
+	public List<Estabelecimento> getEstabelecimentos(String descricao) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try {
+			session.beginTransaction();
+			criteria = session.createCriteria(Estabelecimento.class);
+			criteria.add(Restrictions.ilike("descricao", "%" + descricao + "%"));
+			for (final Object o : criteria.list()) {
+				estabelecimentos.add((Estabelecimento) o);
+			}
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			System.err.println(Messages.get("estabelecimento.erro.listar") + e);
 			session.getTransaction().rollback();
 		}
-		return users;
+		return estabelecimentos;
 	}
 }

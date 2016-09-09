@@ -4,16 +4,17 @@
 <struts-config>
 
 	<form-beans>
-		<form-bean name="userForm" type="com.indra.form.EstabelecimentoForm" />
+		<form-bean name="estabelecimentoForm" type="com.indra.form.EstabelecimentoForm" />
 	</form-beans>
 
 	<action-mappings>
-		<action path="/user" type="com.indra.action.EstabelecimentoAction" parameter="dispatch" name="userForm">
-			<forward name="search" path="/user/search.jsp" />
-			<forward name="add" path="/user/add.jsp" />
+		<action path="/estabelecimento" type="com.indra.action.EstabelecimentoAction"
+			parameter="dispatch" name="estabelecimentoForm">
+			<forward name="pesquisar" path="/estabelecimento/pesquisar.jsp" />
+			<forward name="cadastrar" path="/estabelecimento/cadastrar.jsp" />
 		</action>
 	</action-mappings>
-	
+
 	<message-resources parameter="null" />
 
 </struts-config>
